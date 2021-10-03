@@ -1,0 +1,29 @@
+.placeContent{
+  margin-top: 10px;
+}
+.placeContent h6{
+  color: #fff;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 55px;
+  letter-spacing: 1px;
+}
+.placeContent p{
+  color: #fff;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  text-align: justify;
+  padding-bottom: 15px;
+  padding-top: 10px;
+  padding-right: 30px;
+}
+.booking-btn .btn{
+  background: #F9A51A;
+  border-color: #F9A51A;
+  padding: 8px 25px;
+  color: #222222;
+}
+.booking-btn .btn .svg-inline--fa{
+  margin-left: 10px;
+}

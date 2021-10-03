@@ -1,0 +1,53 @@
+.navbar{
+  padding: 20px 0;
+}
+.navbar img{
+  width: 120px;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-right: 25px;
+  padding-left: 25px;
+  color: #ffffff;
+  font-weight: 400;
+}
+.navbar form{
+  margin-right: 50px;
+}
+.navbar .form-control{
+  border-left: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  border-right: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  background: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+}
+.navbar .form-control:focus{
+  box-shadow: none;
+}
+.navbar .form-control::placeholder{
+  font-size: 14px;
+  color: #ffffff;
+}
+.navbar .btn{
+  color: #ffffff;
+  border-right: 1px solid #ffffff;
+  border-top: 1px solid #ffffff;
+  border-bottom: 1px solid #ffffff;
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.mr{
+  background: #F9A51A;
+  border-radius: 5px;
+  margin-left: 15px;
+  color: #222222!important;
+}
