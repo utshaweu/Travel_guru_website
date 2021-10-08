@@ -18,12 +18,12 @@
   padding-top: 10px;
   padding-right: 30px;
 }
-.booking-btn .btn{
+.placeContent .booking-button .btn{
   background: #F9A51A;
   border-color: #F9A51A;
   padding: 8px 25px;
   color: #222222;
 }
-.booking-btn .btn .svg-inline--fa{
+.placeContent .booking-button .btn .svg-inline--fa{
   margin-left: 10px;
 }

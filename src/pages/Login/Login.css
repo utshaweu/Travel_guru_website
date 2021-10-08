@@ -1,0 +1,53 @@
+.login-register{
+  margin-top: 20%;
+  margin-bottom: 30px;
+}
+.login-register-form{
+  border: 1px solid #ababab;
+  border-radius: 5px;
+  padding: 25px 35px;
+}
+.login-register-form h6{
+  color: #000000;
+  font-weight: 600;
+  font-size: 24px;
+  padding-bottom: 20px;
+}
+.login-register-form .form-control{
+  border-radius: 0;
+  border-bottom: 1px solid #c5c5c5;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  color: #000;
+  padding: 25px 0 5px 0;
+}
+.login-register-form .form-control::placeholder{
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+}
+.login-register-form .form-control:focus{
+  box-shadow: none;
+  border-bottom: 1px solid #F9A51A;
+}
+.login-register-form .form-check{
+  color: #000;
+  font-size: 14px;
+  font-weight: 500;
+}
+.login-register-form span{
+  color: #F9A51A;
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: underline;
+}
+.login-register-form .btn{
+  color: #000000;
+  width: 100%;
+  background: #F9A51A;
+  border-radius: 0;
+  border-color: #F9A51A;
+  padding:  12px 0;
+  margin: 15px 0;
+}

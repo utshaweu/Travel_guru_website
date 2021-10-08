@@ -1,21 +1,18 @@
 import React, { useContext } from 'react';
-import { Form, Nav, Navbar, Button, FormControl, Container } from 'react-bootstrap';
-import './Header.css';
-import logo from '../../Assets/images/logo2.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Nav, Navbar, Container } from 'react-bootstrap';
+import logo2 from '../../Assets/images/Logo.png';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
 
-const Header = () => {
+const SubHeader = () => {
   const {login} = useContext(UserContext);
   const [loggedInUser, setLoggedInUser] = login;
   return (
-    <Navbar expand="lg" fixed="top">
+    <Navbar expand="lg">
       <Container>
         <Navbar.Brand href="#">
           <Link to="/">
-            <img src={logo} alt="logo" />
+            <img src={logo2} alt="logo" />
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
@@ -25,24 +22,13 @@ const Header = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
            >
-            <Form className="d-flex">
-              <FormControl
-                type="search"
-                placeholder="Search your Destination..."
-                className="mr-2"
-                aria-label="Search"
-              />
-              <Button>
-                <FontAwesomeIcon icon={faSearch} />
-              </Button>
-            </Form>
-            <Nav.Link href="#">News</Nav.Link>
-            <Nav.Link href="#">Destination</Nav.Link>
-            <Nav.Link href="#">Blog</Nav.Link>
-            <Nav.Link href="#">Contact</Nav.Link>
+            <Nav.Link href="#" style={{color: '#222222'}}>News</Nav.Link>
+            <Nav.Link href="#" style={{color: '#222222'}}>Destination</Nav.Link>
+            <Nav.Link href="#" style={{color: '#222222'}}>Blog</Nav.Link>
+            <Nav.Link href="#" style={{color: '#222222'}}>Contact</Nav.Link>
             {
               loggedInUser.email && (
-                <Nav.Link href="#" style={{color: '#ffffff', fontWeight: '600'}}>{loggedInUser.displayName}</Nav.Link>
+                <Nav.Link href="#" style={{color: '#F9A51A', fontWeight: '600'}}>{loggedInUser.displayName}</Nav.Link>
               )
             }
             {
@@ -61,4 +47,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default SubHeader;

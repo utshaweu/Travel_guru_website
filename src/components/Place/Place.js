@@ -11,7 +11,7 @@ const Place = ({place}) => {
     <div className="placeContent">
       <h6>{title}</h6>
       <p>{description}</p>
-      <div className="booking-btn">
+      <div className="booking-button">
        <Link to={`/place/${title}`}>
         <Button variant="primary">Booking <FontAwesomeIcon icon={faArrowRight} /></Button>{' '}
        </Link>

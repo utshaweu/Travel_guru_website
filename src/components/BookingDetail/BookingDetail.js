@@ -8,8 +8,8 @@ import './BookingDetail.css';
 const BookingDetail = () => {
 
   const {name} = useParams();
-  const [placeItem, setPlaceItem] = useState([]);
-  // console.log(placeItem);
+  const [placeItem, setPlaceItem] = useState({});
+  //console.log(placeItem);
   const {title, description} = placeItem;
 
 

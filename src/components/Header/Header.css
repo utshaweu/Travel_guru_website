@@ -49,5 +49,7 @@
   background: #F9A51A;
   border-radius: 5px;
   margin-left: 15px;
-  color: #222222!important;
+}
+.mr a{
+  color: #222222;
 }

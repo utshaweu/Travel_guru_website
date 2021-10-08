@@ -1,0 +1,25 @@
+.hotel-img{
+  margin-bottom: 30px;
+}
+.hotel-detail h6{
+  color: #000000;
+  font-size: 16px;
+  padding-bottom: 5px;
+}
+.hotel-detail p{
+  color: #898989;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 0;
+  padding-bottom: 5px;
+}
+.hotel-detail span{
+  color: #000000;
+  font-size: 12px;
+  font-weight: 500;
+}
+.hotel-detail span .svg-inline--fa.fa-w-18{
+  color: #FFAF38;
+  padding-right: 5px;
+  font-size: 14px;
+}

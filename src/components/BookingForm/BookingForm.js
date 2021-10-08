@@ -1,48 +1,63 @@
 import React, { useContext } from 'react';
 import './BookingForm.css';
-import { useForm } from "react-hook-form";
 import { Col, Row } from 'react-bootstrap';
 import { UserContext } from '../../App';
+import { Link } from "react-router-dom";
 
 const BookingForm = ({place}) => {
 
   const {form} = useContext(UserContext);
   const [bookingForm, setBookingForm] = form;
+
   //console.log(bookingForm);
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const onSubmit = data => {
-    setBookingForm(data);
-  };
+  const handleDate = (e) => {
+    const newUserFrom = {...bookingForm};
+    newUserFrom[e.target.name] = e.target.value;
+    setBookingForm(newUserFrom);
+    
+    if(newUserFrom.from && newUserFrom.to){
+      newUserFrom.origin = "Dhaka";
+      newUserFrom.destination = place.title;
+      newUserFrom.bookingDone = true;
+      setBookingForm(newUserFrom);
+    }
+  }
 
-  console.log(watch("example")); // watch input value by passing the name of it
+  const handleAlert = (e) => {
+    alert('Select date');
+    e.preventDefault();
+  }
 
   return (
     <div className="booking-form">
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form action="">
         
-        <label>Origin</label>
-        <input defaultValue="Dhaka" type="text" {...register("origin", { required: true })}/>
-        {errors.origin && <span className="error">This field is required</span>}
+        <label htmlFor="origin">Origin</label>
+        <input type="text" name="origin" defaultValue="Dhaka"/>
 
-        <label>Destination</label>
-        <input defaultValue={place.title} type="text" {...register("destination", { required: true })}/>
-        {errors.destination && <span className="error">This field is required</span>}
+        <label htmlFor="destination">Destination</label>
+        <input type="text" name="destination" defaultValue={place.title}/>
 
         <Row>
           <Col lg={6}>
-            <label>From</label>
-            <input  type="date" {...register("from", { required: true })}/>
-            {errors.from && <span className="error">This field is required</span>}
+            <label htmlFor="from">From</label>
+            <input type="date" name="from" onChange={handleDate}/>
           </Col>
           <Col lg={6}>
-          <label>To</label>
-            <input  type="date" {...register("to", { required: true })}/>
-            {errors.to && <span className="error">This field is required</span>}
+            <label htmlFor="to">To</label>
+            <input type="date" name="to" onChange={handleDate}/>
           </Col>
         </Row>
-        <br/>
-        <input type="submit" value="Start Booking" className="booking-form-btn"/>
+        {
+          bookingForm.bookingDone ? (
+            <Link to="/search">
+              <button className="booking-form-btn">Start Booking</button>
+            </Link>
+          ) : (
+            <button className="booking-btn" onClick={handleAlert} disabled>Start Booking</button>
+          )
+        }
       </form>
     </div>
   );
