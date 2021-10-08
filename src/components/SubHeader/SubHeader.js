@@ -28,7 +28,7 @@ const SubHeader = () => {
             <Nav.Link href="#" style={{color: '#222222'}}>Contact</Nav.Link>
             {
               loggedInUser.email && (
-                <Nav.Link href="#" style={{color: '#F9A51A', fontWeight: '600'}}>{loggedInUser.displayName}</Nav.Link>
+                <Nav.Link href="#" style={{color: '#F9A51A', fontWeight: '600'}}>{loggedInUser.displayName || loggedInUser.firstName}</Nav.Link>
               )
             }
             {

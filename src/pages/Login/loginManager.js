@@ -1,10 +1,30 @@
 import { initializeApp } from 'firebase/app';
 import firebaseConfig from './firebase.config';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, sendEmailVerification, sendPasswordResetEmail } from "firebase/auth";
 
 
 export const initializeLoginFramework = () => {
   initializeApp(firebaseConfig);
+}
+
+export const handleGoogleSignIn = () => {
+  const goggleProvider = new GoogleAuthProvider();
+  const auth = getAuth();
+  return signInWithPopup(auth, goggleProvider)
+  .then(result => {
+    const {displayName, email} = result.user;
+    const signedInUser = {
+      firstName: displayName,
+      email: email,
+      success: true,
+    }
+    return signedInUser;
+    //console.log(displayName, photoURL, email);
+  })
+  .catch(error => {
+    console.error(error);
+    console.log(error.message);
+  })
 }
 
 export const userCreateWithEmailAndPassword = (firstName, email, password) => {
@@ -15,6 +35,7 @@ export const userCreateWithEmailAndPassword = (firstName, email, password) => {
           newUserInfo.error = '';
           newUserInfo.success = true;
           updateUserName(firstName);
+          verifyEmail();
           return newUserInfo;
         })
         .catch((error) => {
@@ -43,6 +64,32 @@ export const logInWithEmailAndPassword = (email, password) => {
         });
 }
 
+
+const verifyEmail = () => {
+  const auth = getAuth();
+  sendEmailVerification(auth.currentUser)
+  .then(() => {
+    // Email verification sent!
+    alert('Email verification sent!');
+    // ...
+  });
+}
+
+export const resetPassword = (email) => {
+  const auth = getAuth();
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      // Password reset email sent!
+      alert('Please check your email');
+      // ..
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      // ..
+    });
+}
 
 const updateUserName = (firstName) => {
   const auth = getAuth();

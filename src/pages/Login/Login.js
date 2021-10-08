@@ -1,8 +1,9 @@
 import React, { useState, useContext } from 'react';
 import { useHistory, useLocation } from 'react-router';
 import { Col, Container, Form, Row, Button } from 'react-bootstrap';
+import google from '../../Assets/images/google.png';
 import { UserContext } from '../../App';
-import { initializeLoginFramework, logInWithEmailAndPassword, userCreateWithEmailAndPassword } from './loginManager';
+import { handleGoogleSignIn, initializeLoginFramework, logInWithEmailAndPassword, resetPassword, userCreateWithEmailAndPassword } from './loginManager';
 import './Login.css';
 import SubHeader from '../../components/SubHeader/SubHeader';
 
@@ -38,6 +39,13 @@ const Login = () => {
     if(redirect){
       history.replace(from);
     }
+  }
+
+  const googleSignIn = () => {
+    handleGoogleSignIn()
+    .then(res => {
+      handleResponse(res, true);
+    } )
   }
 
   const handleBlur = (e) => {
@@ -131,14 +139,21 @@ const Login = () => {
                             <Form.Check type="checkbox" label="Remember Me" />
                           </Form.Group>
                         </Col>
-                        <Col lg={6} style={{textAlign:'right'}}>
-                          <span>Forgot Password</span>
+                        <Col lg={6} style={{textAlign:'right',}}>
+                          <span style={{ cursor: 'pointer'}} onClick={() => resetPassword(user.email)}>Forgot Password</span>
                         </Col>
                       </Row>
                     )
                   }
 
+                  {
+                    newUser && (
+                      <small>** Password length must be 8 character and at least one number.</small>
+                    )
+                  }
+
                   <p style={{color: 'red', fontWeight: 'bold', marginBottom: '0'}}>{error}</p>
+
                   {newUser ? (<Button variant="primary" type="submit">
                     Create an account
                   </Button>
@@ -149,6 +164,7 @@ const Login = () => {
                   )}
 
               </Form>
+
               <div className="text-center">
                 {
                   newUser ? <span style={{textDecoration: 'none', color: '#000000', marginRight: '5px'}}> Already have an account?</span>
@@ -156,15 +172,33 @@ const Login = () => {
                   <span style={{textDecoration: 'none', color: '#000000', marginRight: '5px'}}> Don't have an account?</span>
                 }
                 <span 
+                  style={{cursor: 'pointer'}}
                   onClick={handleSwitch}
-                >{newUser ? 'Login' : 'Create an account'}</span>
+                >{newUser ? 'Login' : 'Create an account'}
+                </span>
               </div>
 
               <p style={{color: 'red', fontWeight: 'bold', marginBottom: '0', textAlign: 'center'}}>{user.error}</p>
+
               {
                 user.success && <p style={{color: 'green', fontWeight: 'bold', marginBottom: '0', textAlign: 'center'}}>User {newUser ? 'Created' : 'Logged In'} Successfully.</p>
               }
              </div>
+
+            <div className="or">
+              <p>Or</p>
+            </div>
+            <div className="google-sign-in" onClick={googleSignIn}>
+              <Row>
+                <Col lg={1}>
+                  <img src={google} alt=""/>
+                </Col>
+                <Col lg={11}>
+                  <span>Continue with Google</span>
+                </Col>
+              </Row>
+            </div>
+
           </div>
         </Col>
       </Row>

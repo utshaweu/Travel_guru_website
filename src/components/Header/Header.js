@@ -42,7 +42,7 @@ const Header = () => {
             <Nav.Link href="#">Contact</Nav.Link>
             {
               loggedInUser.email && (
-                <Nav.Link href="#" style={{color: '#ffffff', fontWeight: '600'}}>{loggedInUser.displayName}</Nav.Link>
+                <Nav.Link href="#" style={{color: '#ffffff', fontWeight: '600'}}>{loggedInUser.displayName || loggedInUser.firstName}</Nav.Link>
               )
             }
             {
